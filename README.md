@@ -18,6 +18,17 @@ module "example_repo" {
   license_template   = "mit"
 
   topics = ["example"]
+
+  collaborators = [
+    {
+      username   = "joakimhellum-in"
+      permission = "push"
+    },
+    {
+      username   = "innovationnorway-bot"
+      permission = "pull"
+    },
+  ]
 }
 ```
 
@@ -41,4 +52,15 @@ module "example_repo" {
 | `archived` | `bool` | Pass `true` to archive the repository. **Note:** You cannot unarchive repositories through the API. Default: `false`. |
 | `topics` | `list` | A list of topics to add to the repository. Pass one or more topics to replace the set of existing topics. Send an empty list (`[]`) to clear all topics from the repository. |
 | `default_branch` | `string` | Updates the default branch for the repository. **Note**: This can only be set after a repository has been created, and after a correct reference has been created for the target branch inside the repository. |
+| `collaborators` | `list` | Add users as collaborators on the repository. | 
 
+The `collaborators` object must have the following keys:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `username` | `string` | The user to add to the repository as a collaborator. |
+| `permission` | `string` | The permission to grant the collaborator. Can be one of: <br> * `pull` - can pull, but not push to or administer this repository. <br> * `push` - can pull and push, but not administer this repository. <br>* `admin` - can pull, push and administer this repository. |
+
+## Limitations
+
+Due to current limitations of the Terraform language, items added or removed from the `collaborators` list will also update subsequent items, with indexes greater than where the addition or removal was made. 

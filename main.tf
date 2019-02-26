@@ -26,3 +26,10 @@ resource "github_repository" "main" {
 
   topics = "${var.topics}"
 }
+
+resource "github_repository_collaborator" "main" {
+  count      = "${length(var.collaborators)}"
+  repository = "${github_repository.main.name}"
+  username   = "${lookup(var.collaborators[count.index], "username")}"
+  permission = "${lookup(var.collaborators[count.index], "permission")}"
+}

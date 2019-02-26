@@ -123,3 +123,11 @@ variable "default_branch" {
 
   description = "Updates the default branch for the repository. This can only be set after a repository has been created."
 }
+
+variable "collaborators" {
+  type = "list"
+
+  default = []
+
+  description = "Add users as collaborators on the repository."
+}
