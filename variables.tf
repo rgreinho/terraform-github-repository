@@ -131,3 +131,11 @@ variable "collaborators" {
 
   description = "Add users as collaborators on the repository."
 }
+
+variable "teams" {
+  type = "list"
+
+  default = []
+
+  description = "Add the repository to a team or update teams permission on the repository."
+}

@@ -33,3 +33,15 @@ resource "github_repository_collaborator" "main" {
   username   = "${lookup(var.collaborators[count.index], "username")}"
   permission = "${lookup(var.collaborators[count.index], "permission")}"
 }
+
+data "github_team" "main" {
+  count = "${length(var.teams)}"
+  slug  = "${lookup(var.teams[count.index], "name")}"
+}
+
+resource "github_team_repository" "main" {
+  count      = "${length(var.teams)}"
+  team_id    = "${element(data.github_team.main.*.id, count.index)}"
+  repository = "${github_repository.main.name}"
+  permission = "${lookup(var.teams[count.index], "permission")}"
+}
