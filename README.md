@@ -116,12 +116,12 @@ The `teams` object must have the following keys:
 | `name` | `string` | The `slug` of a team to be granted access on the repository. |
 | `permission` | `string` | The permission to grant the team on this repository. Can be one of: <br> * `pull` - team members can pull, but not push to or administer this repository. <br> * `push` - team members can pull and push, but not administer this repository. <br> * `admin` - team members can pull, push and administer this repository. |
 
-The `deploy_keys` object accepts the following keys:
+The `deploy_keys` object must have the following keys:
 
 | Name | Type | Description |
 | --- | --- | --- |
 | `title` | `string` | A name for the key. |
-| `key` | `string` | **Required**. The contents of the key. |
+| `key` | `string` | The contents of the key. |
 | `read_only` | `bool` | Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. Default: `true`. |
 
 ## Limitations
