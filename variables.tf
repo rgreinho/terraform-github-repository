@@ -139,3 +139,11 @@ variable "teams" {
 
   description = "Add the repository to a team or update teams permission on the repository."
 }
+
+variable "deploy_keys" {
+  type = "list"
+
+  default = []
+
+  description = "Add deploy keys (SSH keys) that grants access to the repository."
+}

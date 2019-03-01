@@ -7,7 +7,7 @@ Create a new repository.
 ### Create public (e.g. open source) repository
 
 ```hcl
-module "example_repo" {
+module "repository" {
   source = "innovationnorway/repository/github"
 
   name = "example"
@@ -26,7 +26,7 @@ module "example_repo" {
 ### Add collaborators and teams
 
 ```hcl
-module "example_repo" {
+module "repository" {
   source = "innovationnorway/repository/github"
 
   name = "example"
@@ -57,6 +57,27 @@ module "example_repo" {
 }
 ```
 
+### Add deploy keys
+
+```hcl
+module "repository" {
+  source = "innovationnorway/repository/github"
+
+  name = "example"
+
+  description = "My example codebase"
+
+  deploy_keys = [
+    {
+      title = "example-key"
+      key   = "ssh-rsa AAAAB3NzaC1yc2EAAA..."
+
+      read_only = true
+    },
+  ]
+}
+```
+
 ## Arguments
 
 | Name | Type | Description |
@@ -79,6 +100,7 @@ module "example_repo" {
 | `default_branch` | `string` | Updates the default branch for the repository. **Note**: This can only be set after a repository has been created, and after a correct reference has been created for the target branch inside the repository. |
 | `collaborators` | `list` | Add users as collaborators on the repository. | 
 | `teams` | `list` | Add the repository to a team or update teams permission on the repository. |
+| `deploy_keys` | `list` | Add deploy keys (SSH keys) that grants access to the repository. |
 
 The `collaborators` object must have the following keys:
 
@@ -94,6 +116,14 @@ The `teams` object must have the following keys:
 | `name` | `string` | The `slug` of a team to be granted access on the repository. |
 | `permission` | `string` | The permission to grant the team on this repository. Can be one of: <br> * `pull` - team members can pull, but not push to or administer this repository. <br> * `push` - team members can pull and push, but not administer this repository. <br> * `admin` - team members can pull, push and administer this repository. |
 
+The `deploy_keys` object accepts the following keys:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `title` | `string` | A name for the key. |
+| `key` | `string` | **Required**. The contents of the key. |
+| `read_only` | `bool` | Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. Default: `true`. |
+
 ## Limitations
 
-Due to current limitations of the Terraform language, items added or removed from the `collaborators` and `teams` lists, will also update subsequent items with indexes greater than where the addition or removal was made. 
+Due to current limitations of the Terraform language, items added or removed from the `collaborators`, `teams` and `deploy_keys` lists, will also update subsequent items with indexes greater than where the addition or removal was made. 
