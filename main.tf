@@ -30,27 +30,27 @@ resource "github_repository" "main" {
 resource "github_repository_collaborator" "main" {
   count      = length(var.collaborators)
   repository = github_repository.main.name
-  username   = var.collaborators[count.index]["username"]
-  permission = var.collaborators[count.index]["permission"]
+  username   = var.collaborators[count.index].username
+  permission = var.collaborators[count.index].permission
 }
 
 data "github_team" "main" {
   count = length(var.teams)
-  slug  = var.teams[count.index]["name"]
+  slug  = var.teams[count.index].name
 }
 
 resource "github_team_repository" "main" {
   count      = length(var.teams)
-  team_id    = element(data.github_team.main.*.id, count.index)
+  team_id    = data.github_team.main[count.index].id
   repository = github_repository.main.name
-  permission = var.teams[count.index]["permission"]
+  permission = var.teams[count.index].permission
 }
 
 resource "github_repository_deploy_key" "main" {
   count      = length(var.deploy_keys)
   title      = lookup(var.deploy_keys[count.index], "title", "")
   repository = github_repository.main.name
-  key        = var.deploy_keys[count.index]["key"]
+  key        = var.deploy_keys[count.index].key
   read_only  = lookup(var.deploy_keys[count.index], "read_only", true)
 }
 
