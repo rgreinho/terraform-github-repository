@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/innovationnorway/terraform-github-repository/compare/v1.3.0...v2.0.0) (2019-03-01)
+
+
+### Features
+
+* rewrite module source code for v0.12 ([568b514](https://github.com/innovationnorway/terraform-github-repository/commit/568b514))
+
+
+### BREAKING CHANGES
+
+* module has been upgraded to use Terraform v0.12-only features.
+
 # [1.3.0](https://github.com/innovationnorway/terraform-github-repository/compare/v1.2.0...v1.3.0) (2019-03-01)
 
 
