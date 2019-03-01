@@ -1,11 +1,11 @@
 variable "name" {
-  type = "string"
+  type = string
 
   description = "The name of the repository."
 }
 
 variable "description" {
-  type = "string"
+  type = string
 
   default = ""
 
@@ -13,7 +13,7 @@ variable "description" {
 }
 
 variable "homepage_url" {
-  type = "string"
+  type = string
 
   default = ""
 
@@ -21,7 +21,7 @@ variable "homepage_url" {
 }
 
 variable "private" {
-  type = "string"
+  type = string
 
   default = true
 
@@ -29,7 +29,7 @@ variable "private" {
 }
 
 variable "has_issues" {
-  type = "string"
+  type = string
 
   default = true
 
@@ -37,7 +37,7 @@ variable "has_issues" {
 }
 
 variable "has_projects" {
-  type = "string"
+  type = string
 
   default = false
 
@@ -45,7 +45,7 @@ variable "has_projects" {
 }
 
 variable "has_wiki" {
-  type = "string"
+  type = string
 
   default = false
 
@@ -53,7 +53,7 @@ variable "has_wiki" {
 }
 
 variable "auto_init" {
-  type = "string"
+  type = string
 
   default = false
 
@@ -61,7 +61,7 @@ variable "auto_init" {
 }
 
 variable "gitignore_template" {
-  type = "string"
+  type = string
 
   default = ""
 
@@ -69,7 +69,7 @@ variable "gitignore_template" {
 }
 
 variable "license_template" {
-  type = "string"
+  type = string
 
   default = ""
 
@@ -77,7 +77,7 @@ variable "license_template" {
 }
 
 variable "allow_squash_merge" {
-  type = "string"
+  type = string
 
   default = true
 
@@ -85,7 +85,7 @@ variable "allow_squash_merge" {
 }
 
 variable "allow_merge_commit" {
-  type = "string"
+  type = string
 
   default = true
 
@@ -93,7 +93,7 @@ variable "allow_merge_commit" {
 }
 
 variable "allow_rebase_merge" {
-  type = "string"
+  type = string
 
   default = true
 
@@ -101,7 +101,7 @@ variable "allow_rebase_merge" {
 }
 
 variable "archived" {
-  type = "string"
+  type = string
 
   default = false
 
@@ -109,7 +109,7 @@ variable "archived" {
 }
 
 variable "topics" {
-  type = "list"
+  type = list(string)
 
   default = []
 
@@ -117,7 +117,7 @@ variable "topics" {
 }
 
 variable "default_branch" {
-  type = "string"
+  type = string
 
   default = ""
 
@@ -125,7 +125,7 @@ variable "default_branch" {
 }
 
 variable "collaborators" {
-  type = "list"
+  type = list(string)
 
   default = []
 
@@ -133,7 +133,7 @@ variable "collaborators" {
 }
 
 variable "teams" {
-  type = "list"
+  type = list(string)
 
   default = []
 
@@ -141,9 +141,10 @@ variable "teams" {
 }
 
 variable "deploy_keys" {
-  type = "list"
+  type = list(string)
 
   default = []
 
   description = "Add deploy keys (SSH keys) that grants access to the repository."
 }
+
