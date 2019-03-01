@@ -45,3 +45,11 @@ resource "github_team_repository" "main" {
   repository = "${github_repository.main.name}"
   permission = "${lookup(var.teams[count.index], "permission")}"
 }
+
+resource "github_repository_deploy_key" "main" {
+  count      = "${length(var.deploy_keys)}"
+  title      = "${lookup(var.deploy_keys[count.index], "title", "")}"
+  repository = "${github_repository.main.name}"
+  key        = "${lookup(var.deploy_keys[count.index], "key")}"
+  read_only  = "${lookup(var.deploy_keys[count.index], "read_only", true)}"
+}
