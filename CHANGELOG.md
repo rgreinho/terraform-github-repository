@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/innovationnorway/terraform-github-repository/compare/v1.2.0...v1.3.0) (2019-03-01)
+
+
+### Features
+
+* add `deploy_keys` argument ([92c3cc4](https://github.com/innovationnorway/terraform-github-repository/commit/92c3cc4))
+
 # [1.2.0](https://github.com/innovationnorway/terraform-github-repository/compare/v1.1.0...v1.2.0) (2019-02-26)
 
 
