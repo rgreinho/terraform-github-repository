@@ -98,7 +98,7 @@ module "repository" {
 | `archived` | `bool` | Pass `true` to archive the repository. **Note:** You cannot unarchive repositories through the API. Default: `false`. |
 | `topics` | `list` | A list of topics to add to the repository. Pass one or more topics to replace the set of existing topics. Send an empty list (`[]`) to clear all topics from the repository. |
 | `default_branch` | `string` | Updates the default branch for the repository. **Note**: This can only be set after a repository has been created, and after a correct reference has been created for the target branch inside the repository. |
-| `collaborators` | `list` | Add users as collaborators on the repository. | 
+| `collaborators` | `list` | Add users as collaborators on the repository. |
 | `teams` | `list` | Add the repository to a team or update teams permission on the repository. |
 | `deploy_keys` | `list` | Add deploy keys (SSH keys) that grants access to the repository. |
 
@@ -124,6 +124,13 @@ The `deploy_keys` object accepts the following keys:
 | `key` | `string` | **Required**. The contents of the key. |
 | `read_only` | `bool` | Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. Default: `true`. |
 
+The `issue_labels` object accepts the following keys:
+| Name | Type | Description |
+| --- | --- | --- |
+| `name` | `string` | **Required**. The name of the label. |
+| `color` | `string` | A 6 character hex code, without the leading #, identifying the color of the label. |
+| `description` | `string` | A short description of the label.
+
 ## Limitations
 
-Due to current limitations of the Terraform language, items added or removed from the `collaborators`, `teams` and `deploy_keys` lists, will also update subsequent items with indexes greater than where the addition or removal was made. 
+Due to current limitations of the Terraform language, items added or removed from the `collaborators`, `teams` and `deploy_keys` lists, will also update subsequent items with indexes greater than where the addition or removal was made.
