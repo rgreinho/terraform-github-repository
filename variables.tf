@@ -112,12 +112,15 @@ variable "teams" {
 }
 
 variable "deploy_keys" {
-  type = list(object({
-    title     = string
-    key       = string
-    read_only = bool
-  }))
-  default     = []
+  type = "list"
+
+  default = []
+
   description = "Add deploy keys (SSH keys) that grants access to the repository."
 }
 
+variable "issue_labels" {
+  type        = "list"
+  default     = []
+  description = "Create and manage issue labels for a repository"
+}
