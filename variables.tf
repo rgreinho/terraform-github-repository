@@ -147,3 +147,9 @@ variable "deploy_keys" {
 
   description = "Add deploy keys (SSH keys) that grants access to the repository."
 }
+
+variable "issue_labels" {
+  type        = "list"
+  default     = []
+  description = "Create and manage issue labels for a repository"
+}

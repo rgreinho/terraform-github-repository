@@ -53,3 +53,12 @@ resource "github_repository_deploy_key" "main" {
   key        = "${lookup(var.deploy_keys[count.index], "key")}"
   read_only  = "${lookup(var.deploy_keys[count.index], "read_only", true)}"
 }
+
+resource "github_issue_label" "main" {
+  count = "${length(var.issue_labels)}"
+
+  repository  = "${github_repository.main.name}"
+  name        = "${lookup(var.issue_labels[count.index], "name")}"
+  color       = "${lookup(var.issue_labels[count.index], "color")}"
+  description = "${lookup(var.issue_labels[count.index], "description", "")}"
+}
