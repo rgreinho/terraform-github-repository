@@ -4,79 +4,12 @@ Create a new repository.
 
 ## Example Usage
 
-### Create public (e.g. open source) repository
+The [examples](examples) folder contains various examples showcasing various usages of this modules:
 
-```hcl
-module "repository" {
-  source = "innovationnorway/repository/github"
-
-  name = "example"
-
-  description = "My example codebase"
-
-  private = false
-
-  gitignore_template = "Node"
-  license_template   = "mit"
-
-  topics = ["example"]
-}
-```
-
-### Add collaborators and teams
-
-```hcl
-module "repository" {
-  source = "innovationnorway/repository/github"
-
-  name = "example"
-
-  description = "My example codebase"
-
-  collaborators = [
-    {
-      username   = "joakimhellum-in"
-      permission = "push"
-    },
-    {
-      username   = "innovationnorway-bot"
-      permission = "pull"
-    },
-  ]
-
-  teams = [
-    {
-      name       = "terraform"
-      permission = "push"
-    },
-    {
-      name       = "security"
-      permission = "pull"
-    },
-  ]
-}
-```
-
-### Add deploy keys
-
-```hcl
-module "repository" {
-  source = "innovationnorway/repository/github"
-
-  name = "example"
-
-  description = "My example codebase"
-
-  deploy_keys = [
-    {
-      title = "example-key"
-      key   = "ssh-rsa AAAAB3NzaC1yc2EAAA..."
-
-      read_only = true
-    },
-  ]
-}
-```
+* [Create public (e.g. open source) repository](examples/example-simple.tf)
+* [Add collaborators and teams](examples/example-collaborators_and_teams.tf)
+* [Add deploy keys](examples/example-deploy_keys.tf)
+* [Add issue labels](examples/example-labels.tf)
 
 ## Arguments
 
